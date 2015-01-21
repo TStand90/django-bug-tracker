@@ -1,0 +1,13 @@
+{% extends 'bug_tracker/bug_list.html' %}
+
+{% block page_title %}
+    {% if assigned_user == user %}
+        <h1>Bugs Assigned to You</h1>
+    {% else %}
+        <h1>Bugs Assigned to {{ assigned_user }}</h1>
+    {% endif %}
+{% endblock %}
+
+{% block page_description %}
+    <p>All of the bugs you are assigned to.</p>
+{% endblock %}

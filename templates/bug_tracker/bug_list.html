@@ -1,0 +1,54 @@
+{% extends 'bug_tracker/base.html' %}
+
+{% block base_body %}
+
+{% block page_title %}
+    <h1>All Bugs</h1>
+{% endblock %}
+
+{% if bugs_list %}
+
+    {% block page_description %}
+        <p>This is a listing of all bugs.</p>
+    {% endblock %}
+
+    {% block bug_list %}
+
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Priority</th>
+                <th>Assigned To</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for bug in bugs_list %}
+            <tr>
+                <td><a href="{% url 'bug_detail' bug.id %}">{{ bug.title }}</a></td>
+                <td>{{ bug.get_status_display }}</td>
+                <td>{{ bug.get_priority_display }}</td>
+                <td>
+                {% for assignee in bug.assigned_to.all %}
+                    {% if forloop.last %}
+                        {{ assignee }}
+                    {% else %}
+                        {{ assignee }},
+                    {% endif %}
+                {% endfor %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% endblock %}
+
+{% else %}
+
+    <p>Nothing to show here, yet.</p>
+
+{% endif %}
+
+{% endblock %}

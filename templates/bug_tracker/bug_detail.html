@@ -1,0 +1,10 @@
+{% extends 'bug_tracker/base.html' %}
+
+{% block base_body %}
+
+<h1>Bug #{{ bug.id }} - {{ bug.title }}</h1>
+<h3>Status: {{ bug.get_status_display }}</h3>
+<h3>Priority: {{ bug.get_priority_display }}</h3>
+
+
+{% endblock %}

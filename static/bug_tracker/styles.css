@@ -1,0 +1,11 @@
+.main-content {
+    margin-top: 50px;
+}
+
+.errorlist {
+    color: red;
+}
+
+#id_assigned_to {
+    height: 100px;
+}
